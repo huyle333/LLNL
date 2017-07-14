@@ -9,14 +9,8 @@ public class NavigationGestureOn : MonoBehaviour, INavigationHandler
     private float rotationFactor;
     public float RotationSensitivity = 10.0f;
 
-    private void Start()
-    {
-        Debug.Log("FOR FUN");
-    }
-
     public void OnNavigationStarted(NavigationEventData eventData)
     {
-        Debug.Log("ROTATING");
     }
 
     public void OnNavigationUpdated(NavigationEventData eventData)
@@ -26,6 +20,7 @@ public class NavigationGestureOn : MonoBehaviour, INavigationHandler
         var gazeDirection = Camera.main.transform.forward;
 
         RaycastHit hitInfo;
+        // Use the navigation gesture to rotate the object.
         if (Physics.Raycast(headPosition, gazeDirection, out hitInfo, Mathf.Infinity))
         {
             rotationFactor = eventData.CumulativeDelta.x * RotationSensitivity;

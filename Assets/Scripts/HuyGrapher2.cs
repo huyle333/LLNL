@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// TWO DIMENSIONAL GRAPHS. catlikecoding.com
+/// </summary>
 public class HuyGrapher2 : MonoBehaviour {
-
-    [Range(10, 100)]
-    public int resolution = 10;
-
-    private int currentResolution;
-    private ParticleSystem.Particle[] points;
 
     public enum FunctionOption
     {
@@ -19,8 +16,6 @@ public class HuyGrapher2 : MonoBehaviour {
         Ripple
     }
 
-    public FunctionOption function;
-
     private delegate float FunctionDelegate(Vector3 p, float t);
     private static FunctionDelegate[] functionDelegates = {
         Linear,
@@ -29,6 +24,14 @@ public class HuyGrapher2 : MonoBehaviour {
         Sine,
         Ripple
     };
+
+    public FunctionOption function;
+
+    [Range(10, 100)]
+    public int resolution = 10;
+
+    private int currentResolution;
+    private ParticleSystem.Particle[] points;
 
     private void CreatePoints()
     {
@@ -48,7 +51,6 @@ public class HuyGrapher2 : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (currentResolution != resolution || points == null)
@@ -69,28 +71,28 @@ public class HuyGrapher2 : MonoBehaviour {
         gameObject.GetComponent<ParticleSystem>().SetParticles(points, points.Length);
     }
 
-	private static float Linear (Vector3 p, float t)
+    private static float Linear(Vector3 p, float t)
     {
-		return p.x;
+        return p.x;
     }
 
-	private static float Exponential (Vector3 p, float t)
+    private static float Exponential(Vector3 p, float t)
     {
-		return p.x * p.x;
+        return p.x * p.x;
     }
 
     private static float Parabola(Vector3 p, float t)
     {
-        p.x += p.x - 1f;
-        p.z += p.z - 1f;
+        p.x = 2f * p.x - 1f;
+        p.z = 2f * p.z - 1f;
         return 1f - p.x * p.x * p.z * p.z;
     }
 
     private static float Sine(Vector3 p, float t)
     {
         return 0.50f +
-            0.25f * Mathf.Sin(4f * Mathf.PI * p.x + 4f * t) * Mathf.Sin(2f * Mathf.PI * p.z + t) +
-            0.10f * Mathf.Cos(3f * Mathf.PI * p.x + 5f * t) * Mathf.Cos(5f * Mathf.PI * p.z + 3f * t) +
+            0.25f * Mathf.Sin(4 * Mathf.PI * p.x + 4 * t) * Mathf.Sin(2 * Mathf.PI * p.z + t) +
+            0.10f * Mathf.Cos(3 * Mathf.PI * p.x + 5 * t) * Mathf.Cos(5 * Mathf.PI * p.z + 3 * t) +
             0.15f * Mathf.Sin(Mathf.PI * p.x + 0.6f * t);
     }
 

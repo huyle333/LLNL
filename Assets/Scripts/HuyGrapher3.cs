@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// THREE DIMENSIONAL GRAPHS. catlikecoding.com
 /// It's time to add the third dimension! This will turn our graph from a grid into a cube, which we can use for volumetric representations.
 /// In other words, we'll create a tiny voxel system.
 /// </summary>
 public class HuyGrapher3 : MonoBehaviour {
-
-    [Range(10, 30)]
-    public int resolution = 10;
-
-    private int currentResolution;
-    private ParticleSystem.Particle[] points;
 
     public enum FunctionOption
     {
@@ -23,10 +18,6 @@ public class HuyGrapher3 : MonoBehaviour {
         Ripple
     }
 
-    public FunctionOption function;
-    public bool absolute;
-    public float threshold = 0.5f;
-
     private delegate float FunctionDelegate(Vector3 p, float t);
     private static FunctionDelegate[] functionDelegates = {
         Linear,
@@ -35,6 +26,16 @@ public class HuyGrapher3 : MonoBehaviour {
         Sine,
         Ripple
     };
+
+    public FunctionOption function;
+    public bool absolute;
+    public float threshold = 0.5f;
+
+    [Range(10, 30)]
+    public int resolution = 10;
+
+    private int currentResolution;
+    private ParticleSystem.Particle[] points;
 
     private void CreatePoints()
     {
@@ -57,7 +58,6 @@ public class HuyGrapher3 : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (currentResolution != resolution || points == null)

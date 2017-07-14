@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ONE DIMENSIONAL GRAPHS. catlikecoding.com
+/// </summary>
 public class HuyGrapher1 : MonoBehaviour {
-
-    [Range(10, 100)]
-    public int resolution = 10;
-
-    private int currentResolution;
-    private ParticleSystem.Particle[] points;
 
     public enum FunctionOption
     {
@@ -18,8 +15,6 @@ public class HuyGrapher1 : MonoBehaviour {
         Sine
     }
 
-    public FunctionOption function;
-
     private delegate float FunctionDelegate(float x);
     private static FunctionDelegate[] functionDelegates = {
         Linear,
@@ -27,6 +22,14 @@ public class HuyGrapher1 : MonoBehaviour {
         Parabola,
         Sine
     };
+
+    public FunctionOption function;
+
+    [Range(10, 100)]
+    public int resolution = 10;
+
+    private int currentResolution;
+    private ParticleSystem.Particle[] points;
 
     private void CreatePoints()
     {
@@ -42,7 +45,6 @@ public class HuyGrapher1 : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (currentResolution != resolution || points == null)
@@ -53,7 +55,7 @@ public class HuyGrapher1 : MonoBehaviour {
         for (int i = 0; i < resolution; i++)
         {
             Vector3 p = points[i].position;
-            p.y = Linear(p.x);
+            p.y = f(p.x);
             points[i].position = p;
             Color c = points[i].color;
             c.g = p.y;

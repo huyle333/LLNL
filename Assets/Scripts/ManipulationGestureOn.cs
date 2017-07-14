@@ -16,6 +16,7 @@ public class ManipulationGestureOn : MonoBehaviour, IManipulationHandler
         var gazeDirection = Camera.main.transform.forward;
 
         RaycastHit hitInfo;
+        // Use the manipulation gesture to move the object.
         if (Physics.Raycast(headPosition, gazeDirection, out hitInfo, Mathf.Infinity))
         {
             hitInfo.transform.position += eventData.CumulativeDelta;

@@ -421,10 +421,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8afe25401e65e4ba20ab79550c357d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolution: 10
   function: 0
   absolute: 0
   threshold: 0.5
+  resolution: 10
 --- !u!199 &616358296
 ParticleSystemRenderer:
   serializedVersion: 3
@@ -3608,12 +3608,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 616358294}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 1258889176}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &616358299
 BoxCollider:
@@ -3637,6 +3637,7 @@ GameObject:
   - component: {fileID: 815455322}
   - component: {fileID: 815455321}
   - component: {fileID: 815455320}
+  - component: {fileID: 815455323}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -3681,6 +3682,163 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &815455323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 815455319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2795b3e072e1745a4f8c670d64284f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RecognizerStart: 0
+  KeywordsAndResponses:
+  - Keyword: One Dimensional
+    KeyCode: 8
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 886671535}
+          m_MethodName: GraphSetActive
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Graph1
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: Two Dimensional
+    KeyCode: 8
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 886671535}
+          m_MethodName: GraphSetActive
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Graph2
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: Three Dimensional
+    KeyCode: 8
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 886671535}
+          m_MethodName: GraphSetActive
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Graph3
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: Linear
+    KeyCode: 8
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 886671535}
+          m_MethodName: GraphTypeSetActive
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Linear
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: Exponential
+    KeyCode: 8
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 886671535}
+          m_MethodName: GraphTypeSetActive
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Exponential
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: Parabola
+    KeyCode: 8
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 886671535}
+          m_MethodName: GraphTypeSetActive
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Parabola
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: Sine
+    KeyCode: 8
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 886671535}
+          m_MethodName: GraphTypeSetActive
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Sine
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: Ripple
+    KeyCode: 8
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 886671535}
+          m_MethodName: GraphTypeSetActive
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Ripple
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
 --- !u!1 &886671534
 GameObject:
   m_ObjectHideFlags: 0
@@ -3719,7 +3877,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1002829699
 GameObject:
@@ -6923,12 +7081,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1002829699}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1258889176}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1002829703
 MonoBehaviour:
@@ -6941,8 +7099,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbfa1031ffbb43b449167cf81224ac45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolution: 10
   function: 0
+  resolution: 10
 --- !u!65 &1002829704
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6973,7 +7131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1014394640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7110,7 +7268,7 @@ Transform:
   - {fileID: 1710217283}
   - {fileID: 601864702}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1149055537
 Prefab:
@@ -7192,6 +7350,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 406720995}
+  - {fileID: 1002829702}
+  - {fileID: 1709493195}
+  - {fileID: 616358298}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7474,7 +7635,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013367923696, guid: dc138879450c80f438141cbe47938daf, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc138879450c80f438141cbe47938daf, type: 2}
@@ -7540,7 +7701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1709493192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7552,8 +7713,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0623c9322714c2f4891b9a223b494cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolution: 10
   function: 0
+  resolution: 10
 --- !u!199 &1709493193
 ParticleSystemRenderer:
   serializedVersion: 3
@@ -7662,7 +7823,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 334145208
+  randomSeed: 811885153
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10737,12 +10898,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1709493191}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 1258889176}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1709493196
 BoxCollider:
@@ -10778,7 +10939,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 886671535}
-        m_MethodName: TurnOffGesture
+        m_MethodName: SwitchGestures
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11139,7 +11300,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011307205380, guid: a3827c8f79c5a584bacb6462f022e305, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1000011857482914, guid: a3827c8f79c5a584bacb6462f022e305, type: 2}
       propertyPath: m_IsActive
