@@ -4,6 +4,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 using HoloToolkit.Unity.InputModule;
+using System;
 
 namespace HoloToolkit.Examples.SharingWithUNET
 {
@@ -117,6 +118,11 @@ namespace HoloToolkit.Examples.SharingWithUNET
         public override void OnStartLocalPlayer()
         {
             GetComponentInChildren<MeshRenderer>().material.color = Color.blue;
+
+            // Store who the local player is.
+            GameObject utilitiesObject = GameObject.Find("Utilities");
+            Utilities utilitiesScript = utilitiesObject.GetComponent<Utilities>();
+            utilitiesScript.localPlayer = this.gameObject;
         }
 
         /// <summary>
