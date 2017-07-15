@@ -8,15 +8,15 @@ public class Utilities : MonoBehaviour {
     // Triggered by PlayerController to store the local player gameobject.
     public GameObject localPlayer { set; get; }
 
-    // The Navigation script that we are going to shut off after 7 seconds because we only want either Manipulation or Navigation.
+    // The Navigation script that we are going to shut off after 18 seconds because we only want either Manipulation or Navigation.
     // Only one of them because the gestures are basically the same, so they conflict with other.
     // The difference is that the manipulation gesture can move things on the Z axis, while navigation gesture is x and y.
     private NavigationGestureOn navigationGestureScript;
 
-    private float waitTime = 7f;
+    private float waitTime = 18f;
     private float timeToCheck;
 
-    // 1. Find the local player after 7 seconds.
+    // 1. Find the local player after 18 seconds.
     private bool localPlayerFound = false;
     // 2. Disable the navigation gesture script because we only want the manipulation script at the moment on.
     private bool initialNavigationGestureDisableDone = false;
@@ -83,7 +83,7 @@ public class Utilities : MonoBehaviour {
     /// <param name="graphName"></param>
     public void GraphSetActive(string graphName)
     {
-        SharedCollection.Instance.gameObject.transform.Find("Graph1").gameObject.SetActive(false);
+        SharedCollection.Instance.gameObject.transform.Find("Graph1(Clone)").gameObject.SetActive(false);
         SharedCollection.Instance.gameObject.transform.Find("Graph2").gameObject.SetActive(false);
         SharedCollection.Instance.gameObject.transform.Find("Graph3").gameObject.SetActive(false);
 
@@ -96,7 +96,7 @@ public class Utilities : MonoBehaviour {
     /// <param name="graphType"></param>
     public void GraphTypeSetActive(string graphType)
     {
-        GameObject graph1 = SharedCollection.Instance.gameObject.transform.Find("Graph1").gameObject;
+        GameObject graph1 = SharedCollection.Instance.gameObject.transform.Find("Graph1(Clone)").gameObject;
         GameObject graph2 = SharedCollection.Instance.gameObject.transform.Find("Graph2").gameObject;
         GameObject graph3 = SharedCollection.Instance.gameObject.transform.Find("Graph3").gameObject;
 

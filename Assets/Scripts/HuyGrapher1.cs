@@ -1,11 +1,77 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+using HoloToolkit.Examples.SharingWithUNET;
+using HoloToolkit.Unity.InputModule;
 
 /// <summary>
 /// ONE DIMENSIONAL GRAPHS. catlikecoding.com
 /// </summary>
-public class HuyGrapher1 : MonoBehaviour {
+public class HuyGrapher1 : NetworkBehaviour {
+
+    /// <summary>
+    /// The transform of the shared world anchor.
+    /// </summary>
+    private Transform sharedWorldAnchorTransform;
+
+    /// <summary>
+    /// The position relative to the shared world anchor.
+    /// </summary>
+    [SyncVar(hook = "OnChangeLocalPosition")]
+    private Vector3 localPosition;
+
+    /// <summary>
+    /// The rotation relative to the shared world anchor.
+    /// </summary>
+    [SyncVar(hook = "OnChangeLocalRotation")]
+    private Quaternion localRotation;
+
+    /// <summary>
+    /// Sets the localPosition and localRotation on clients.
+    /// </summary>
+    /// <param name="postion">the localPosition to set</param>
+    /// <param name="rotation">the localRotation to set</param>
+    [Command]
+    public void CmdTransform(Vector3 postion, Quaternion rotation)
+    {
+        if (!isLocalPlayer)
+        {
+            localPosition = postion;
+            localRotation = rotation;
+        }
+    }
+
+    [ClientRpc]
+    public void RpcPosition(Vector3 postion)
+    {
+        transform.localPosition = postion;
+    }
+
+    [ClientRpc]
+    public void RpcRotation(Quaternion rotation)
+    {
+        transform.localRotation = rotation;
+    }
+
+    private void Start()
+    {
+        if (SharedCollection.Instance == null)
+        {
+            Debug.LogError("This script required a SharedCollection script attached to a gameobject in the scene");
+            Destroy(this);
+            return;
+        }
+
+        sharedWorldAnchorTransform = SharedCollection.Instance.gameObject.transform;
+        transform.SetParent(sharedWorldAnchorTransform);
+
+        if (isServer)
+        {
+            localPosition = transform.localPosition;
+            localRotation = transform.localRotation;
+        }
+    }
 
     public enum FunctionOption
     {
@@ -62,6 +128,37 @@ public class HuyGrapher1 : MonoBehaviour {
             points[i].color = c;
         }
         gameObject.GetComponent<ParticleSystem>().SetParticles(points, points.Length);
+    }
+
+    public void NetworkTransformUpdate(ManipulationEventData eventData)
+    {
+        // Depending on if you are host or client, either setting the SyncVar (client) 
+        // or calling the Cmd (host) will update the other users in the session.
+        // So we have to do both.
+        /*
+        localPosition = transform.localPosition;
+        localRotation = transform.localRotation;
+        CmdTransform(localPosition, localRotation);
+        */
+        if (!isServer)
+        {
+            return;
+        }
+
+        this.transform.position += eventData.CumulativeDelta;
+        localPosition = transform.localPosition;
+        localRotation = transform.localRotation;
+
+        RpcPosition(this.transform.localPosition);
+        RpcRotation(this.transform.localRotation);
+    }
+
+    void OnChangeLocalPosition (Vector3 newLocalPosition)
+    {
+    }
+
+    void OnChangeLocalRotation (Quaternion newLocalRotation)
+    {
     }
 
     private static float Linear(float x)

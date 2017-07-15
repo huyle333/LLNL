@@ -19,7 +19,14 @@ public class ManipulationGestureOn : MonoBehaviour, IManipulationHandler
         // Use the manipulation gesture to move the object.
         if (Physics.Raycast(headPosition, gazeDirection, out hitInfo, Mathf.Infinity))
         {
-            hitInfo.transform.position += eventData.CumulativeDelta;
+            if (hitInfo.transform.name == "Graph1(Clone)")
+            {
+                HuyGrapher1 graph1Script = hitInfo.transform.gameObject.GetComponent<HuyGrapher1>();
+                graph1Script.NetworkTransformUpdate(eventData);
+            } else
+            {
+                hitInfo.transform.position += eventData.CumulativeDelta;
+            }
         }
     }
 
